@@ -1,7 +1,7 @@
 # 🌐 Portfolio Website
 
 A modern and responsive **personal portfolio website** to showcase my projects, skills, and achievements.  
-This site is built using **HTML, CSS, and JavaScript**, and is hosted with **GitHub Pages**.
+This site is built using **HTML, CSS,Bootstrap and JavaScript**, and is hosted with **GitHub Pages**.
 
 🔗 **Live Demo:** [Portfolio Website](https://adithya27adi.github.io/portfolio-website/)
 
@@ -20,7 +20,7 @@ Through this project, I practiced:
 
 HTML structure and semantic elements
 
-CSS styling and responsiveness
+CSS,Bootstarp styling and responsiveness
 
 Basic JavaScript interactivity
 
