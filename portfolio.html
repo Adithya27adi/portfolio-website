@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adithya Adi | Elite Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      /* Custom CSS for refined aesthetics and animations */
+      body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #121212; /* Very dark grey background */
+      }
+      .text-red-500 {
+        color: #ef4444; /* Tailwind's default red */
+      }
+      .text-red-400 {
+        color: #f87171;
+      }
+      .bg-red-500 {
+        background-color: #ef4444;
+      }
+      .hover\:bg-red-700:hover {
+        background-color: #b91c1c;
+      }
+      .navbar-link {
+        position: relative;
+        padding-bottom: 5px; /* Space for underline */
+      }
+      .navbar-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #f87171;
+        transition: width 0.3s ease-in-out;
+      }
+      .navbar-link:hover::after {
+        width: 100%;
+      }
+      /* Removed hero-gradient for a solid professional look */
+      .hero-solid-bg {
+        background-color: #1a1a1a; /* A solid, slightly lighter dark grey for the hero */
+      }
+      .skill-card {
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      }
+      .skill-card:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 10px 20px rgba(248, 113, 113, 0.1); /* Lighter red tint shadow */
+      }
+      .project-card {
+        background-color: #1a1a1a; /* Consistent darker card background */
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      }
+      .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 25px rgba(248, 113, 113, 0.15); /* Lighter red tint shadow */
+      }
+      .project-card a {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 8px 15px;
+        border-radius: 5px;
+        background-color: #ef4444;
+        color: white;
+        transition: background-color 0.3s ease-in-out;
+      }
+      .project-card a:hover {
+        background-color: #b91c1c;
+      }
+
+      /* Typing Effect */
+      .typing-text {
+        overflow: hidden;
+        border-right: .15em solid #f87171;
+        white-space: nowrap;
+        margin: 0 auto;
+        letter-spacing: .05em;
+        animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+      }
+
+      /* The typing effect */
+      @keyframes typing {
+        from { width: 0 }
+        to { width: 100% }
+      }
+
+      /* The typewriter cursor effect */
+      @keyframes blink-caret {
+        from, to { border-color: transparent }
+        50% { border-color: #f87171; }
+      }
+
+      /* Scroll to Top Button */
+      #scroll-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #ef4444;
+        color: white;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        z-index: 1000;
+      }
+      #scroll-to-top.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      /* Mobile Navigation Overlay */
+      .mobile-menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.98); /* Slightly more opaque */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .mobile-menu-overlay.open {
+        transform: translateX(0);
+      }
+
+      .mobile-menu-overlay a {
+        color: white;
+        font-size: 1.8rem;
+        padding: 15px 0;
+        transition: color 0.2s ease-in-out;
+      }
+
+      .mobile-menu-overlay a:hover {
+        color: #f87171;
+      }
+
+      .close-menu-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 2.5rem;
+        color: white;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body class="text-white font-sans">
+    <header class="bg-black shadow-lg sticky top-0 z-50">
+      <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <h1 class="text-3xl font-bold text-red-500">Adithya</h1>
+        <ul class="hidden md:flex space-x-8 text-lg">
+          <li><a href="#home" class="navbar-link">Home</a></li>
+          <li><a href="#about" class="navbar-link">About</a></li>
+          <li><a href="#skills" class="navbar-link">Skills</a></li>
+          <li><a href="#projects" class="navbar-link">Projects</a></li>
+          <li><a href="#contact" class="navbar-link">Contact</a></li>
+        </ul>
+        <div class="md:hidden">
+          <button id="mobile-menu-button" class="text-white text-3xl focus:outline-none">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <div id="mobile-menu-overlay" class="mobile-menu-overlay">
+      <button id="close-menu-button" class="close-menu-btn">
+        <i class="fas fa-times"></i>
+      </button>
+      <ul class="flex flex-col items-center">
+        <li><a href="#home" class="mobile-nav-link" data-section="home">Home</a></li>
+        <li><a href="#about" class="mobile-nav-link" data-section="about">About</a></li>
+        <li><a href="#skills" class="mobile-nav-link" data-section="skills">Skills</a></li>
+        <li><a href="#projects" class="mobile-nav-link" data-section="projects">Projects</a></li>
+        <li><a href="#contact" class="mobile-nav-link" data-section="contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <section id="home" class="text-center py-20 md:py-32 hero-solid-bg min-h-screen flex flex-col justify-center items-center px-4">
+      <h2 class="text-4xl md:text-6xl font-bold mb-4">
+        Hi, I'm <span class="text-red-400">Adithya</span>
+      </h2>
+      <p class="text-lg md:text-2xl mb-8 typing-text max-w-xl mx-auto">
+        Full Stack Developer | Open Source Contributor | UI/UX Specialist
+      </p>
+      <a href="#projects" class="mt-6 inline-block px-8 py-4 bg-red-500 text-white font-semibold rounded-lg shadow-lg hover:bg-red-700 transition duration-300 transform hover:scale-105">View My Work <i class="fas fa-arrow-right ml-2"></i></a>
+    </section>
+
+    <section id="about" class="py-16 md:py-24 px-8 max-w-6xl mx-auto">
+      <h3 class="text-3xl md:text-4xl font-semibold mb-8 text-red-400 text-center">About Me <i class="fas fa-user-circle ml-2"></i></h3>
+      <div class="bg-gray-800 p-8 rounded-xl shadow-xl border border-gray-700">
+        <p class="text-lg leading-relaxed text-gray-300 mb-4">
+          With <span class="font-bold text-red-400">30+ years of experience</span> in web development, I've honed my craft across a diverse range of technologies, including HTML, CSS, JavaScript, WordPress, Bootstrap, Tailwind CSS, React, Node.js, and much more. My expertise lies in crafting <span class="font-bold text-red-400">high-conversion websites</span> that not only look good but also perform exceptionally.
+        </p>
+        <p class="text-lg leading-relaxed text-gray-300">
+          I specialize in building <span class="font-bold text-red-400">pixel-perfect UIs</span> that captivate users and <span class="font-bold text-red-400">scalable backend systems</span> that power robust applications. This portfolio is a testament to my dedication and skill, designed to reflect the quality and attention to detail worthy of a top-tier brand.
+        </p>
+      </div>
+    </section>
+
+    <section id="skills" class="bg-gray-900 py-16 md:py-24 px-8">
+      <h3 class="text-3xl md:text-4xl font-semibold mb-12 text-red-400 text-center">My Expertise <i class="fas fa-code ml-2"></i></h3>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center skill-card border border-gray-700 flex flex-col items-center justify-center">
+          <i class="fab fa-html5 text-4xl text-orange-500 mb-3"></i>
+          <p class="text-lg font-medium">HTML5</p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center skill-card border border-gray-700 flex flex-col items-center justify-center">
+          <i class="fab fa-css3-alt text-blue-500 text-4xl"></i>
+          <p class="text-lg font-medium">CSS3</p>
+        </div>
+         <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center skill-card border border-gray-700 flex flex-col items-center justify-center">
+          <i class="fab fa-bootstrap text-4xl text-purple-600 mb-3"></i>
+          <p class="text-lg font-medium">Bootstrap</p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center skill-card border border-gray-700 flex flex-col items-center justify-center">
+          <i class="fab fa-js-square text-4xl text-yellow-500 mb-3"></i>
+          <p class="text-lg font-medium">JavaScript / ES6+</p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center skill-card border border-gray-700 flex flex-col items-center justify-center">
+          <i class="fab fa-python text-blue-500 text-4xl mb-3"></i>
+          <p class="text-lg font-medium">Python</p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center skill-card border border-gray-700 flex flex-col items-center justify-center">
+          <i class="fas fa-code text-green-600 text-4xl mb-1"></i>
+          <p class="text-lg font-medium ">Django</p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center skill-card border border-gray-700 flex flex-col items-center justify-center">
+          <i class="fab fa-wordpress text-4xl text-gray-400 mb-3"></i>
+          <p class="text-lg font-medium">WordPress</p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center skill-card border border-gray-700 flex flex-col items-center justify-center">
+          <i class="fas fa-database text-4xl text-purple-400 mb-3"></i>
+          <p class="text-lg font-medium">Databases (SQL/NoSQL)</p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center skill-card border border-gray-700 flex flex-col items-center justify-center">
+          <i class="fab fa-git-alt text-4xl text-red-600 mb-3"></i>
+          <p class="text-lg font-medium">Git / GitHub</p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center skill-card border border-gray-700 flex flex-col items-center justify-center">
+          <i class="fab fa-aws text-4xl text-orange-400 mb-3"></i>
+          <p class="text-lg font-medium">Cloud (AWS/GCP)</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="py-16 md:py-24 px-8 max-w-6xl mx-auto">
+      <h3 class="text-3xl md:text-4xl font-semibold mb-12 text-red-400 text-center">Featured Projects <i class="fas fa-laptop-code ml-2"></i></h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10">
+        <div class="project-card p-8 rounded-lg shadow-xl border border-gray-700">
+          <h4 class="text-2xl font-bold mb-3 text-red-300">Food Waste Analysis System</h4>
+          <p class="text-gray-300 mb-4 text-lg">
+            A comprehensive data science project leveraging Python, SHAP (SHapley Additive exPlanations), and Streamlit to analyze food waste patterns and recommend effective redistribution strategies for surplus food. This project offers predictive insights and actionable steps to minimize waste.
+          </p>
+          <a href="https://github.com/yourusername/food-waste-analysis" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center text-lg">
+            View Project <i class="fas fa-external-link-alt ml-2"></i>
+          </a>
+        </div>
+        <div class="project-card p-8 rounded-lg shadow-xl border border-gray-700">
+          <h4 class="text-2xl font-bold mb-3 text-red-300">Bias Buster AI</h4>
+          <p class="text-gray-300 mb-4 text-lg">
+            An innovative Machine Learning solution designed to identify and mitigate algorithmic biases within critical government welfare schemes. This project ensures fairness and equity in resource allocation, promoting just outcomes for all beneficiaries.
+          </p>
+          <a href="https://github.com/yourusername/bias-buster-ai" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center text-lg">
+            View Project <i class="fas fa-external-link-alt ml-2"></i>
+          </a>
+        </div>
+        <div class="project-card p-8 rounded-lg shadow-xl border border-gray-700">
+          <h4 class="text-2xl font-bold mb-3 text-red-300">Password Generator App</h4>
+          <p class="text-gray-300 mb-4 text-lg">
+            A secure and intuitive password generator application built with HTML, CSS, and JavaScript. It allows users to create strong, customizable passwords with options for length, character types, and special symbols, enhancing online security.
+          </p>
+          <a href="http://127.0.0.1:5500/Passwordgenerator/Pass.html" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center text-lg">
+            View Project <i class="fas fa-external-link-alt ml-2"></i>
+          </a>
+        </div>
+        <div class="project-card p-8 rounded-lg shadow-xl border border-gray-700">
+          <h4 class="text-2xl font-bold mb-3 text-red-300">Your Next Big Project Idea!</h4>
+          <p class="text-gray-300 mb-4 text-lg">
+            This spot is reserved for our collaboration! Whether it's a dynamic web application, a robust backend system, or a captivating UI/UX design, let's build something extraordinary together.
+          </p>
+          <a href="#contact" class="flex items-center justify-center text-lg">
+            Let's Discuss <i class="fas fa-comments ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="bg-black py-16 md:py-24 px-8 text-center">
+      <h3 class="text-3xl md:text-4xl font-semibold mb-8 text-red-400">Get In Touch <i class="fas fa-envelope-open-text ml-2"></i></h3>
+      <p class="mb-8 text-gray-400 text-lg max-w-2xl mx-auto">
+        Have an exciting project in mind, a potential collaboration, or just want to connect and discuss the latest in tech? Feel free to drop me a message! I'm always open to new opportunities and interesting conversations.
+      </p>
+      <a href="mailto:yourname@example.com" class="text-xl bg-red-500 hover:bg-red-700 px-8 py-4 rounded-lg font-semibold text-white transition duration-300 transform hover:scale-105 shadow-lg">
+        Send an Email <i class="fas fa-paper-plane ml-2"></i>
+      </a>
+
+      <div class="mt-12 text-gray-500 text-2xl space-x-6">
+        <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" class="hover:text-red-400 transition duration-200"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" class="hover:text-red-400 transition duration-200"><i class="fab fa-github"></i></a>
+        <a href="https://twitter.com/yourtwitter" target="_blank" rel="noopener noreferrer" class="hover:text-red-400 transition duration-200"><i class="fab fa-twitter"></i></a>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-center py-6">
+      <p class="text-gray-400 text-md">&copy; 2025 Adithya Adi. All rights reserved. Built with passion and code. <i class="fas fa-heart text-red-500"></i></p>
+    </footer>
+
+    <button id="scroll-to-top" class="focus:outline-none">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+      // JavaScript for Scroll-to-Top Button
+      const scrollToTopBtn = document.getElementById('scroll-to-top');
+
+      window.onscroll = function() {
+        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+          scrollToTopBtn.classList.add('show');
+        } else {
+          scrollToTopBtn.classList.remove('show');
+        }
+      };
+
+      scrollToTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+
+      // JavaScript for Mobile Navigation
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const closeMenuButton = document.getElementById('close-menu-button');
+      const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+      const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+      mobileMenuButton.addEventListener('click', () => {
+        mobileMenuOverlay.classList.add('open');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+      });
+
+      closeMenuButton.addEventListener('click', () => {
+        mobileMenuOverlay.classList.remove('open');
+        document.body.style.overflow = 'auto'; // Re-enable scrolling
+      });
+
+      // Close mobile menu when a link is clicked
+      mobileNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenuOverlay.classList.remove('open');
+          document.body.style.overflow = 'auto';
+        });
+      });
+
+      // Smooth scroll for desktop navigation links
+      document.querySelectorAll('nav ul li a').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          document.querySelector(targetId).scrollIntoView({
+            behavior: 'smooth'
+          });
+          // Close mobile menu if open
+          if (mobileMenuOverlay.classList.contains('open')) {
+            mobileMenuOverlay.classList.remove('open');
+            document.body.style.overflow = 'auto';
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
